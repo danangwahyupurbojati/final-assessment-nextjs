@@ -101,7 +101,7 @@ const ProductDetail = () => {
                     <Typography variant="h5" gutterBottom>{simpleProduct.name}</Typography>
                     <div>
                         <Typography variant="h6" gutterBottom>Deskripsi :</Typography>
-                        <p>{simpleProduct.description.html}</p>
+                        <div className="description" dangerouslySetInnerHTML={{ __html: simpleProduct.description.html }} />
                     </div>
                     <div>
                         <Typography variant="h6" gutterBottom>Harga :</Typography>

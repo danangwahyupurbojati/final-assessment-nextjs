@@ -16,3 +16,12 @@ a {
   padding: 0;
   margin: 0;
 }
+
+.description{
+    margin-bottom: 16px;
+}
+
+.description ul{
+    margin-top: 8px;
+    list-style-position: inside;
+}
