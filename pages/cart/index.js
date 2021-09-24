@@ -16,8 +16,11 @@ import Paper from '@mui/material/Paper';
 import TableFooter from "@mui/material/TableFooter";
 
 const CartPage = () => {
-
-    const token = typeof window !== 'undefined' ? localStorage.getItem('cart-token') : null
+    /*
+        When you're rendering on the server, you do not have a browser and thus you do not have access to all the APIs that the browser provides, including localStorage. 
+    */
+   const token = typeof window !== 'undefined' ? localStorage.getItem('cart-token') : null;
+    
 
     const { loading, error, data } = useQuery(GET_CART, {
         variables: {

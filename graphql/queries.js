@@ -15,6 +15,7 @@ export const GET_PRODUCT_BY_CATEGORY = gql`
     query GetCategoryLists($filters: CategoryFilterInput){
         categoryList(filters: $filters){
             name
+            description
             products{
                 items{
                     name

@@ -19,8 +19,10 @@ import Button from '@mui/material/Button';
 const ProductDetail = () => {
     const router = useRouter();
 
-    // manage add cart status
+    // giving information after users add product to cart
     const [open, setOpen] = useState(false);
+
+    // disable button when adds new product to cart
     const [disable, setDisable] = useState(false);
 
     const { loading, error, data } = useQuery(GET_PRODUCT_DETAIL, {
@@ -53,12 +55,13 @@ const ProductDetail = () => {
         setOpen(false);
     };
 
-    
+
+    // add product to cart
+    // saving cart token locally
     const addCartAction = async (sku) => {
         setDisable(true);
 
         if(!localStorage.getItem('cart-token')){
-            console.log('buat token disini')
             const {data: {createEmptyCart}} = await createCartToken();
             localStorage.setItem('cart-token', createEmptyCart);
         }
@@ -79,7 +82,6 @@ const ProductDetail = () => {
     }
     
     const simpleProduct = data.products.items.filter(product => product.__typename === "SimpleProduct")[0];
-    // console.log(simpleProduct)
 
     return ( 
         <Container style={{paddingTop: 100}}>
@@ -89,15 +91,16 @@ const ProductDetail = () => {
         
             <Typography gutterBottom align="center" variant="h3">Detail Produk</Typography>
 
+
             <Grid container spacing={5}>
-                <Grid item md={6}>
-                    <div style={{width: '100%', height: '400px', position: 'relative'}}>
-                        <Image layout="fill" objectFit="cover" src={simpleProduct.image.url} alt={simpleProduct.name} />
+                <Grid item md={6} xs={12}>
+                    <div className="detail-image">
+                        <Image layout="fill" objectFit="contain" src={simpleProduct.image.url} alt={simpleProduct.name} />
 
                     </div>
 
                 </Grid>
-                <Grid item md={6}>
+                <Grid item md={6} xs={12}>
                     <Typography variant="h5" gutterBottom>{simpleProduct.name}</Typography>
                     <div>
                         <Typography variant="h6" gutterBottom>Deskripsi :</Typography>

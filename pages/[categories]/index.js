@@ -43,6 +43,11 @@ const CategoryDetail = () => {
 
             <Typography gutterBottom align="center" variant="h3">{data.categoryList[0].name} - Category</Typography>
             {
+                data.categoryList[0].description && (
+                    <div className="category-description" dangerouslySetInnerHTML={{ __html: data.categoryList[0].description }} />
+                )
+            }
+            {
                 (!loading && simpleProducts.length) ? (
                     <Grid container spacing={3}>
                         {
