@@ -4,9 +4,9 @@ import { useState } from "react";
 
 import { useQuery, useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
-import { withApollo } from '../../../lib/apollo';
-import { GET_PRODUCT_DETAIL } from "../../../graphql/queries";
-import { CREATE_CART_TOKEN, ADD_PRODUCT_TO_CART } from "../../../graphql/mutations";
+import { withApollo } from '../lib/apollo';
+import { GET_PRODUCT_DETAIL } from "../graphql/queries";
+import { CREATE_CART_TOKEN, ADD_PRODUCT_TO_CART } from "../graphql/mutations";
 
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
@@ -30,7 +30,7 @@ const ProductDetail = () => {
             search: "",
             filter: {
                 url_key: {
-                    eq: router.query.productDetail
+                    eq: router.query.product
                 }
             }
         }
@@ -42,7 +42,15 @@ const ProductDetail = () => {
     if(loading){
         return (
             <div>
-                <h1>loading</h1>
+                <Typography gutterBottom align="center" variant="h3">Loading</Typography>
+            </div>
+        )
+    }
+
+    if(error){
+        return (
+            <div>
+                <Typography gutterBottom align="center" variant="h3">Something Error, Please Wait A Moment ...</Typography>
             </div>
         )
     }
@@ -86,7 +94,7 @@ const ProductDetail = () => {
     return ( 
         <Container style={{paddingTop: 100}}>
             <Head>
-                <title>Demo | {router.query.productDetail}</title>
+                <title>Demo | {router.query.product}</title>
             </Head>
         
             <Typography gutterBottom align="center" variant="h3">Detail Produk</Typography>

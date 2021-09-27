@@ -25,7 +25,12 @@ const ProductItem = ({product}) => {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Link href="/[categories]/[productDetail]" as={`/${router.query.categories}/${product.url_key}`}>
+                <Link 
+                    href="/[product]" 
+                    as={`/${product.url_key}`}
+                    // href="/[product]" 
+                    // as="/test-aja"
+                >
                     <a style={{width: "100%"}}>
                         <Button fullWidth variant="contained">
                             Detail Product

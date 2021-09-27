@@ -34,7 +34,15 @@ const CartPage = () => {
     if(loading){
         return (
             <div>
-                <h1>loading</h1>
+                <Typography gutterBottom align="center" variant="h3">Loading</Typography>
+            </div>
+        )
+    }
+
+    if(error){
+        return (
+            <div>
+                <Typography gutterBottom align="center" variant="h3">Something Error, Please Wait A Moment ...</Typography>
             </div>
         )
     }
