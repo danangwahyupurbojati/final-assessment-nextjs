@@ -26,8 +26,9 @@ const ProductItem = ({product}) => {
             </CardContent>
             <CardActions>
                 <Link 
-                    href="/[product]" 
-                    as={`/${product.url_key}`}
+                    href="/[...slug]" 
+                    as={`/${product.canonical_url}`}
+                    // as={`/${product.url_key}`}
                     // href="/[product]" 
                     // as="/test-aja"
                 >

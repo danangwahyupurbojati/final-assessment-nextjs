@@ -20,7 +20,8 @@ const CategoryItem = ({category}) => {
                 <Typography align="center">{category.name}</Typography>
             </CardContent>
             <CardActions>
-                <Link href="/all-categories/[categoryurl]" as={`/all-categories/${category.url_key}`}>
+                {/* <Link href="/all-categories/[categoryurl]" as={`/all-categories/${category.url_key}`}> */}
+                <Link href="/[...slug]" as={`/${category.url_path}.html`}>
                     <a style={{width: "100%"}}>
                         <Button fullWidth variant="contained">
                             lihat category

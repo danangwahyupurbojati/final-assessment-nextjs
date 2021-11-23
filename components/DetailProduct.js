@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { useState } from "react";
 
 import { useQuery, useMutation } from "@apollo/client";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 import { withApollo } from '../lib/apollo';
 import { GET_PRODUCT_DETAIL } from "../graphql/queries";
 import { CREATE_CART_TOKEN, ADD_PRODUCT_TO_CART } from "../graphql/mutations";
@@ -16,8 +16,9 @@ import Alert from '@mui/material/Alert';
 import Button from '@mui/material/Button';
 
 
-const ProductDetail = () => {
-    const router = useRouter();
+const ProductDetail = ({resolver}) => {
+    console.log('detail', resolver.canonical_url.replace(".html", ""))
+    // const router = useRouter();
 
     // giving information after users add product to cart
     const [open, setOpen] = useState(false);
@@ -30,7 +31,7 @@ const ProductDetail = () => {
             search: "",
             filter: {
                 url_key: {
-                    eq: router.query.product
+                    eq: resolver.canonical_url.replace(".html", "")
                 }
             }
         }
@@ -94,7 +95,7 @@ const ProductDetail = () => {
     return ( 
         <Container style={{paddingTop: 100}}>
             <Head>
-                <title>Demo | {router.query.product}</title>
+                <title>Detail Page</title>
             </Head>
         
             <Typography gutterBottom align="center" variant="h3">Detail Produk</Typography>

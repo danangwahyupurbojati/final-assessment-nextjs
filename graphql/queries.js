@@ -1,11 +1,26 @@
 import { gql } from '@apollo/client';
 
+export const GET_URL_RESOLVER = gql`
+    query getUrlResolver($url: String!){
+        urlResolver(url: $url){
+            canonical_url
+            entity_uid
+            id
+            redirectCode
+            relative_url
+            type
+        }
+    }
+`;
+
 export const GET_CATEGORIES = gql`
     query GetCategoryLists{
         categoryList(filters: {}){
             name
             uid
             url_key
+            url_path
+            url_suffix
             image
         }
     }
@@ -16,6 +31,9 @@ export const GET_PRODUCT_BY_CATEGORY = gql`
         categoryList(filters: $filters){
             name
             description
+            url_key
+            url_path
+            url_suffix
             products{
                 items{
                     name
@@ -24,6 +42,7 @@ export const GET_PRODUCT_BY_CATEGORY = gql`
                     uid
                     sku
                     url_key
+                    canonical_url
                     image{
                         url
                     }
